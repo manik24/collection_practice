@@ -2,6 +2,7 @@ package worksheet;
 
 import org.testng.annotations.Test;
 import org.testng.annotations.BeforeClass;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.Test;
 import org.testng.annotations.BeforeClass;
@@ -14,18 +15,20 @@ import org.openqa.selenium.support.ui.Select;
 
 public class signupjuni {
 
-	 static WebDriver driver;
+	  ChromeDriver driver;
 	
-	@BeforeClass
-	public static void Setup() throws InterruptedException
+	@BeforeMethod
+	public  void Setup() throws InterruptedException
    {
-	String weburl="https://www.facebook.com/";
+	
 	System.setProperty("webdriver.chrome.driver", "../selenium/chromedriver.exe");
 	driver = new ChromeDriver();
+	String weburl="https://www.facebook.com/";
 	driver.get(weburl);
 	driver.manage().window().maximize();
 	Thread.sleep(2000);
    }
+	
 	@Test
    public void Case() throws InterruptedException
    {
@@ -54,22 +57,50 @@ public class signupjuni {
     WebElement birthday=driver.findElement(By.name("birthday_day"));
     WebElement month=driver.findElement(By.id("month"));
     WebElement year=driver.findElement(By.id("year"));
+    
+    Text(birthday,"24"); //generic function used 
+    value(month,"12");
+    value(year,"1995");
+    
+    /* selecting the value for the web element 
+    
     Select s1=new Select(birthday);
     s1.selectByVisibleText("24");
     Select s2=new Select(month);
     s2.selectByValue("12");
     Select s3=new Select(year);
     s3.selectByValue("1995");
-  
+   
+   */
+    
     /* radio button selection and submit */
-    WebElement gender = driver.findElement(By.cssSelector("input#u_2_3"));
+    WebElement gender = driver.findElement(By.cssSelector("input[value='2']"));
     gender.click();
     Thread.sleep(2000);
-    WebElement submit=driver.findElement(By.cssSelector("button#u_2_s"));
+    WebElement submit=driver.findElement(By.name("websubmit"));
     	submit.click();
     	
     	
-   }	
+   }
+	public static void Text(WebElement ele1,String abc)
+	   {
+		   Select sel1=new Select(ele1);
+		   sel1.selectByVisibleText(abc);
+	   }
+	   
+	   public static void Index(WebElement ele2,int a)
+	   {
+		   Select sel2=new Select(ele2);
+		   sel2.selectByIndex(a);
+		   
+	   }
+	   
+	   public static void value(WebElement ele3,String efg)
+	   {
+		   Select sel3=new Select(ele3);
+		   sel3.selectByValue(efg);
+	   }
+	   
    @AfterMethod
 public void Teardown() throws InterruptedException
     {
