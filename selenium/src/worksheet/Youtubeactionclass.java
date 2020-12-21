@@ -15,9 +15,10 @@ public class Youtubeactionclass {
 		driver.get(weburl);
 		driver.manage().window().maximize();
 		Thread.sleep(2000);
-	/*
+	
 		
 		// Play all the videos of the web page on youtube
+		
 		java.util.List<WebElement> ls= driver.findElements(By.xpath("//a[@class='yt-simple-endpoint inline-block style-scope ytd-thumbnail']"));
 		for(int i=0;i<=ls.size();i++)
 		{
@@ -27,7 +28,7 @@ public class Youtubeactionclass {
 			Thread.sleep(2000);
 		}
 	
-		*/
+		
 		
 		
 		//below code is to run a specific video on web page on youtube
