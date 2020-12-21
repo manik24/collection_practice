@@ -21,7 +21,7 @@ public static void main(String[] args) throws InterruptedException {
 		
 		Thread.sleep(3000);
 		WebElement hotel = driver.findElement(By.xpath("//span[text()='Hotels']"));
-	    hotel.click();
+	        hotel.click();
 		Thread.sleep(3000);
 		
 		WebElement place = driver.findElement(By.xpath("//input[@data-cy='city']"));
